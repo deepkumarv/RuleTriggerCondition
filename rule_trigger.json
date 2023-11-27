@@ -1,0 +1,69 @@
+[
+    {
+        "rule_trigger_name": "SNMP App Trigger",
+        "trigger_priority": 1,
+        "trigger_condition":
+        [
+            {
+                "topic": "Event Topics",
+                "column_name": "category",
+                "operator": "REGEX",
+                "value": "^ERROR|MAJOR$",
+                "relationship_type": "AND"
+            },
+            {
+                "topic": "Event Topics",
+                "column_name": "subdomain",
+                "operator": "=",
+                "value": 4,
+                "relationship_type": "AND"
+            }
+        ],
+        "active": "True"
+    },
+    {
+        "rule_trigger_name": "FTP App Trigger",
+        "trigger_priority": 5,
+        "trigger_condition":
+        [
+            {
+                "topic": "Event Topics",
+                "column_name": "displayName",
+                "operator": "REGEX",
+                "value": "^Ongoing ",
+                "relationship_type": "or"
+            },
+            {
+                "topic": "Event Topics",
+                "column_name": "topSeverity",
+                "operator": "=",
+                "value": "MAJOR",
+                "relationship_type": "AND"
+            }
+        ],
+        "active": "True"
+    },
+    {
+        "rule_trigger_name": "DNS App Trigger",
+        "trigger_priority": 2,
+        "trigger_condition":
+        [
+            {
+                "topic": "Event Topics",
+                "column_name": "topSeverity",
+                "operator": "=",
+                "value": "CRITICAL",
+                "relationship_type": "and"
+            },
+            {
+                "topic": "Event Topics",
+                "column_name": "domain",
+                "operator": "REGEX",
+                "value": "cx-cx-emear-ttg-labs.saas.appdynamics.com",
+                "relationship_type": "AND"
+            }
+        ],
+        "active": "True"
+    }
+]
+
